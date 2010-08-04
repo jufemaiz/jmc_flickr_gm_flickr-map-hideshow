@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          Flickr Beta Map Toggle
-// @namespace     http://code.euphemize.net/greasemonkey/flickr/
+// @namespace     http://github.com/jufemaiz/jmc_flickr_gm_flickr-map-hideshow
 // @description   Toggle the appearance of the map on the new flickr page.
 // @include       http://*flickr.com/photos/*
 //
@@ -57,5 +57,10 @@ var $;
 		  		$('#photo-story-map').css({'display':'none'});
 			}
 		);
+		
+		// Finally, prefetch properly the images
+		$('#photo-story-map #photoGeolocation-smallmap img').each(function(){
+			$(this).attr('src',$(this).attr('data-defer-src'));
+		});
 		
 	}
